@@ -82,6 +82,7 @@
       :class="{ 'is-focus': visible }"
       @focus="handleFocus"
       @blur="handleBlur"
+      @input="debouncedOnInputChange"
       @keyup.native="debouncedOnInputChange"
       @keydown.native.down.stop.prevent="navigateOptions('next')"
       @keydown.native.up.stop.prevent="navigateOptions('prev')"
@@ -700,7 +701,7 @@
           this.visible = false;
         }
         this.isSilentBlur = byClick;
-        this.setSoftFocus();
+        // this.setSoftFocus();
         if (this.visible) return;
         this.$nextTick(() => {
           this.scrollToOption(option);

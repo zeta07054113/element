@@ -1,6 +1,6 @@
 {
-  "name": "element-ui",
-  "version": "2.4.8",
+  "name": "element-ui-mobile",
+  "version": "1.0.0",
   "description": "A Component Library for Vue.js.",
   "main": "lib/element-ui.common.js",
   "files": [
@@ -28,15 +28,11 @@
     "test": "npm run lint && npm run build:theme && cross-env CI_ENV=/dev/ karma start test/unit/karma.conf.js --single-run",
     "test:watch": "npm run build:theme && karma start test/unit/karma.conf.js"
   },
-  "faas": {
-    "domain": "element",
-    "public": "temp_web/element"
-  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ElemeFE/element.git"
+    "url": "git@github.com:zeta07054113/element-ui-mobile.git"
   },
-  "homepage": "http://element.eleme.io",
+  "homepage": "https://github.com/zeta07054113/element-ui-mobile",
   "keywords": [
     "eleme",
     "vue",
@@ -44,7 +40,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElemeFE/element/issues"
+    "url": "https://github.com/zeta07054113/element-ui-mobile/issues"
   },
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
