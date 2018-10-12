@@ -14,9 +14,9 @@ Este sitio, le permitirá obtener una vista previa del tema con un nuevo color e
 $--color-primary: teal;
 
 /* Ubicación de la fuente, obligatoria */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: '~element-ui-mobile/lib/theme-chalk/fonts';
 
-@import "~element-ui/packages/theme-chalk/src/index";
+@import "~element-ui-mobile/packages/theme-chalk/src/index";
 ```
 
 Entonces, en el archivo principal del proyecto, importe este archivo de estilos en lugar de los estilos de Element:

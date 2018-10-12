@@ -10,21 +10,21 @@ var transitionList = fs.readdirSync(path.resolve(__dirname, '../src/transitions'
 var externals = {};
 
 Object.keys(Components).forEach(function(key) {
-  externals[`element-ui/packages/${key}`] = `element-ui/lib/${key}`;
+  externals[`element-ui-mobile/packages/${key}`] = `element-ui-mobile/lib/${key}`;
 });
 
-externals['element-ui/src/locale'] = 'element-ui/lib/locale';
+externals['element-ui-mobile/src/locale'] = 'element-ui-mobile/lib/locale';
 utilsList.forEach(function(file) {
   file = path.basename(file, '.js');
-  externals[`element-ui/src/utils/${file}`] = `element-ui/lib/utils/${file}`;
+  externals[`element-ui-mobile/src/utils/${file}`] = `element-ui-mobile/lib/utils/${file}`;
 });
 mixinsList.forEach(function(file) {
   file = path.basename(file, '.js');
-  externals[`element-ui/src/mixins/${file}`] = `element-ui/lib/mixins/${file}`;
+  externals[`element-ui-mobile/src/mixins/${file}`] = `element-ui-mobile/lib/mixins/${file}`;
 });
 transitionList.forEach(function(file) {
   file = path.basename(file, '.js');
-  externals[`element-ui/src/transitions/${file}`] = `element-ui/lib/transitions/${file}`;
+  externals[`element-ui-mobile/src/transitions/${file}`] = `element-ui-mobile/lib/transitions/${file}`;
 });
 
 externals = [Object.assign({
@@ -37,7 +37,7 @@ exports.alias = {
   main: path.resolve(__dirname, '../src'),
   packages: path.resolve(__dirname, '../packages'),
   examples: path.resolve(__dirname, '../examples'),
-  'element-ui': path.resolve(__dirname, '../')
+  'element-ui-mobile': path.resolve(__dirname, '../')
 };
 
 exports.vue = {

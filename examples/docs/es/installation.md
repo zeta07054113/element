@@ -10,13 +10,13 @@ npm i element-ui -S
 
 ### CDN
 
-Obtenga la última versión desde [unpkg.com/element-ui](https://unpkg.com/element-ui/) , e importe el JavaScript y los archivos CSS en su página.
+Obtenga la última versión desde [unpkg.com/element-ui](https://unpkg.com/element-ui-mobile/) , e importe el JavaScript y los archivos CSS en su página.
 
 ```html
 <!-- import CSS -->
-<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="https://unpkg.com/element-ui-mobile/lib/theme-chalk/index.css">
 <!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/element-ui-mobile/lib/index.js"></script>
 ```
 
 ##Tip

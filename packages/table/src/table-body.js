@@ -1,7 +1,7 @@
 import { getCell, getColumnByCell, getRowIdentity } from './util';
-import { getStyle, hasClass, addClass, removeClass } from 'element-ui/src/utils/dom';
-import ElCheckbox from 'element-ui/packages/checkbox';
-import ElTooltip from 'element-ui/packages/tooltip';
+import { getStyle, hasClass, addClass, removeClass } from 'element-ui-mobile/src/utils/dom';
+import ElCheckbox from 'element-ui-mobile/packages/checkbox';
+import ElTooltip from 'element-ui-mobile/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 

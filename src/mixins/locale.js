@@ -1,4 +1,4 @@
-import { t } from 'element-ui/src/locale';
+import { t } from 'element-ui-mobile/src/locale';
 
 export default {
   methods: {
