@@ -80,6 +80,7 @@
       :readonly="readonly"
       :validate-event="false"
       :class="{ 'is-focus': visible }"
+      @focusin.native="handleFocusin"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="debouncedOnInputChange"
@@ -96,8 +97,8 @@
         <slot name="prefix"></slot>
       </template>
       <i slot="suffix"
-       :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"
-       @click="handleIconClick"
+         :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"
+         @click="handleIconClick"
       ></i>
     </el-input>
     <transition
@@ -144,14 +145,14 @@
   import ElScrollbar from 'element-ui-mobile/packages/scrollbar';
   import debounce from 'throttle-debounce/debounce';
   import Clickoutside from 'element-ui-mobile/src/utils/clickoutside';
-  import { addClass, removeClass, hasClass } from 'element-ui-mobile/src/utils/dom';
-  import { addResizeListener, removeResizeListener } from 'element-ui-mobile/src/utils/resize-event';
-  import { t } from 'element-ui-mobile/src/locale';
+  import {addClass, removeClass, hasClass} from 'element-ui-mobile/src/utils/dom';
+  import {addResizeListener, removeResizeListener} from 'element-ui-mobile/src/utils/resize-event';
+  import {t} from 'element-ui-mobile/src/locale';
   import scrollIntoView from 'element-ui-mobile/src/utils/scroll-into-view';
-  import { getValueByPath } from 'element-ui-mobile/src/utils/util';
-  import { valueEquals } from 'element-ui-mobile/src/utils/util';
+  import {getValueByPath} from 'element-ui-mobile/src/utils/util';
+  import {valueEquals} from 'element-ui-mobile/src/utils/util';
   import NavigationMixin from './navigation-mixin';
-  import { isKorean } from 'element-ui-mobile/src/utils/shared';
+  import {isKorean} from 'element-ui-mobile/src/utils/shared';
 
   export default {
     mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
@@ -246,7 +247,7 @@
       ElScrollbar
     },
 
-    directives: { Clickoutside },
+    directives: {Clickoutside},
 
     props: {
       name: String,
@@ -263,7 +264,7 @@
         type: String,
         validator(val) {
           process.env.NODE_ENV !== 'production' &&
-            console.warn('[Element Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
+          console.warn('[Element Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.');
           return true;
         }
       },
@@ -566,7 +567,15 @@
           this.resetInputHeight();
         });
       },
-
+      handleFocusin() {
+        const input = this.$refs.reference;
+        if (input) {
+          let $input = input.$refs.input;
+          if ($input.readOnly) {
+            $input.blur();
+          }
+        }
+      },
       handleFocus(event) {
         if (!this.softFocus) {
           if (this.automaticDropdown || this.filterable) {
@@ -652,12 +661,7 @@
           let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0];
           const tags = this.$refs.tags;
           const sizeInMap = this.initialInputHeight || 40;
-          input.style.height = this.selected.length === 0
-            ? sizeInMap + 'px'
-            : Math.max(
-              tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
-              sizeInMap
-            ) + 'px';
+          input.style.height = this.selected.length === 0 ? sizeInMap + 'px' : Math.max(tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0, sizeInMap) + 'px';
           if (this.visible && this.emptyText !== false) {
             this.broadcast('ElSelectDropdown', 'updatePopper');
           }
@@ -701,7 +705,7 @@
           this.visible = false;
         }
         this.isSilentBlur = byClick;
-        // this.setSoftFocus();
+        if (!this.readonly) this.setSoftFocus();
         if (this.visible) return;
         this.$nextTick(() => {
           this.scrollToOption(option);
